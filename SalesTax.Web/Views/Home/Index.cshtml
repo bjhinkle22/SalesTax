@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+<br />
+<div>
+@Html.ActionLink("Tax Rate by Location", "GetTaxRates", "TaxRateLookup",FormMethod.Get,new { @class="btn btn-primary"})
+</div>
+<br />
+<div>
+@Html.ActionLink("Sales Tax for Order", "CalculateSalesTax", "TaxCalculator",FormMethod.Get,new { @class="btn btn-primary"})
+</div>

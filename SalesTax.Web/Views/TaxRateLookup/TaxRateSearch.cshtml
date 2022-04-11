@@ -1,0 +1,30 @@
+﻿@using SalesTax.Domain.Models
+@model LocationTaxRateModel
+@{
+    ViewData["Title"] = "Search";
+}
+
+@if (Model.IsError == true)
+{
+    <br />
+    <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Please enter another Zip Code and try submitting again.</strong>  
+    </div>
+}
+
+<br />
+<form asp-controller="TaxRateLookup" asp-action="GetTaxRates" method="post" role="form">
+    Enter Zip to get Tax Rate:
+    <input asp-for="rate.zip" class="form-control" />
+    <span asp-validation-for="rate.zip" class="text-danger"></span>
+    <input asp-for="IsError" hidden />
+    <br />
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+@section Scripts {
+   @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

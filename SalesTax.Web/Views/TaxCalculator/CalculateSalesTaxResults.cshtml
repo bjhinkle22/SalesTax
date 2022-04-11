@@ -1,0 +1,87 @@
+﻿@using SalesTax.Domain.Models
+@model Task<SalesTaxModel>
+@{
+    ViewData["Title"] = "Results";
+}
+
+@if (Model.Result.IsError == true)
+{
+    <br />
+    <div class="alert alert-dismissible alert-primary">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Please ensure both To and From are the same state to receive the correct data.</strong>  
+    </div>
+}
+
+<br />
+@if (Model.Result.tax.jurisdictions != null)
+{
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-secondary">
+                <th>Country</th>
+                <th>State</th>
+                <th>County</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => m.Result.tax.jurisdictions.country)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => m.Result.tax.jurisdictions.state)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => m.Result.tax.jurisdictions.county)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => m.Result.tax.jurisdictions.city)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}
+
+@if (Model.Result.tax != null)
+{
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-secondary">
+                <th>Order Total</th>
+                <th>Shipping</th>
+                <th>Taxable Amount</th>
+                <th>Amount to Collect</th>
+                <th>Rate</th>
+                <th>Has Nexus</th>
+                <th>Freight Taxability</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    $@Html.DisplayFor(m => m.Result.tax.order_total_amount)
+                </td>
+                <td>
+                    $@Html.DisplayFor(m => m.Result.tax.shipping)
+                </td>
+                <td>
+                    $@Html.DisplayFor(m => m.Result.tax.taxable_amount)
+                </td>
+                <td>
+                    $@Html.DisplayFor(m => m.Result.tax.amount_to_collect)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => m.Result.tax.rate)
+                </td>
+                <td >
+                    @Html.DisplayFor(m => m.Result.tax.has_nexus)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => m.Result.tax.freight_taxable)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}

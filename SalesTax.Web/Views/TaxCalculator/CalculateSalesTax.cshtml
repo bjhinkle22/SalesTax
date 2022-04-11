@@ -1,0 +1,69 @@
+﻿@using SalesTax.Domain.Models
+@model OrderModel
+@{
+    ViewData["Title"] = "Calculate Sales Tax";
+}
+
+
+<br />
+<form asp-controller="TaxCalculator" asp-action="CalculateSalesTax" method="post" role="form">
+    <div class="row">
+        Total amount of the Order (Excluding Shipping):
+        <div class="input-group mb-3" style="padding-top:10px;">
+            <span class="input-group-text">$</span>
+            <input asp-for="amount" class="form-control" />
+        </div>
+        Cost of Shipping:
+        <div class="input-group mb-3" style="padding-top:10px;">
+            <span class="input-group-text">$</span>
+            <input asp-for="shipping" class="form-control" />
+        </div>
+        <div class="alert alert-dismissible alert-primary">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>Please ensure both To and From are the same state to receive the correct data. Test data is provided for ease of testing.</strong>
+        </div>
+        <br />
+        <div class="col" style="padding-top:10px;">
+            From Country:
+            <input asp-for="from_country" class="form-control" disabled />
+            <br />
+            From State:
+            <input asp-for="from_state" class="form-control" />
+            <br />
+            From City:
+            <input asp-for="from_city" class="form-control" />
+            <br />
+            From Zip:
+            <span asp-validation-for="to_zip" class="text-danger"></span>
+            <input asp-for="from_zip" class="form-control" />
+            <br />
+            From Street:
+            <input asp-for="from_street" class="form-control" />
+        </div>
+        <div class="col" style="padding-top:10px;">
+            To Country:
+            <input asp-for="to_country" class="form-control" disabled />
+            <br />
+            To State:
+            <input asp-for="to_state" class="form-control" />
+            <br />
+            To City:
+            <input asp-for="to_city" class="form-control" />
+            <br />
+            To Zip:
+            <span asp-validation-for="to_zip" class="text-danger"></span>
+            <input asp-for="to_zip" class="form-control" />
+            <br />
+            To Street:
+            <input asp-for="to_street" class="form-control" />
+            <br />
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+   @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

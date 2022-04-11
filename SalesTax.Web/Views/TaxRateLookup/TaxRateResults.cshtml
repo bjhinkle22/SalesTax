@@ -1,0 +1,80 @@
+﻿@using SalesTax.Domain.Models
+@model Task<LocationTaxRateModel>
+
+@{
+    ViewData["Title"] = "Results";
+}
+
+
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr class="table-secondary">
+            <th>Country</th>
+            <th>State</th>
+            <th>County</th>
+            <th>City</th>
+            <th>Zip</th>
+            <th>Freight Taxability</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(m => m.Result.rate.country)
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.Result.rate.state)
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.Result.rate.county)
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.Result.rate.city)
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.Result.rate.zip)
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.Result.rate.freight_taxable)
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<br />
+
+<table class="table table-hover">
+    <thead>
+        <tr class="table-secondary">
+            <th>Country Tax Rate</th>
+            <th>State Tax Rate</th>
+            <th>County Tax Rate</th>
+            <th>City Tax Rate</th>
+            <th>Combined District Tax Rate</th>
+            <th>Combined Tax Rate</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(m => m.Result.rate.country_rate)
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.Result.rate.state_rate)
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.Result.rate.county_rate)
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.Result.rate.city_rate)
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.Result.rate.combined_district_rate)
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.Result.rate.combined_rate)
+            </td>
+        </tr>
+    </tbody>
+</table>
